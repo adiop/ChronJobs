@@ -1,0 +1,96 @@
+---
+staging:
+  intranet:
+    name: INTRANET
+    db: Intranet
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=Intranet
+    user: PRODWRITE
+    password: wRit3T00
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  pdm:
+    name: PDM
+    db: PDM
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=PDM
+    user: PRODWRITE
+    password: wRit3T00
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  crm:
+    name: CRM
+    db: CRMSQL
+    jdbcUrl: jdbc:sqlserver://CRMSQL:1433;encrypt=false;sslProtocol=TLSv1;databaseName={Warn_Industries_Inc__MSCRM}
+    user: sa
+    password: Chickens0up
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  jdeBusiness:
+    name: CRPDTA
+    db: CRPDTA
+    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+    user: REDZONE
+    password: 2writesometimes
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  jdeControl:
+    name: JDE_PY910
+    db: jde-dbtest
+    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PY910
+    user: REDZONE
+    password: 2writesometimes
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  jdeSystem:
+    name: JDE910
+    db: jde-dbtest
+    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
+    user: REDZONE
+    password: 2writesometimes
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  notificationRestService:
+    protocol: http
+    hostName: warn-apiserv01
+    port: 6001
+    urlPrefix: /warn/util/api/v1/notification/
+    key: 583eccb2-1f67-11e9-ab14-d663bd873d93
+    subject: (TEST EMAIL)
+
+---
+prod:
+  notificationRestService:
+    protocol: http
+    hostName: warn-apiserv01
+    port: 7001
+    urlPrefix: /warn/util/api/v1/notification/
+    key: 583eccb2-1f67-11e9-ab14-d663bd873d93
