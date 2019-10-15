@@ -79,7 +79,7 @@
                 </tr>
                 <tr>
                     <td class="headerEcn" width="20%">
-                        <b>Ecn Number</b> : ${ecn.ecnNumber}
+                        <b>Ecn Number</b> : <a href="http://redzone/pdm/ecn/ecn.jsp?ecn_number=${ecn.ecnNumber}" >${ecn.ecnNumber}</a>
                     </td>
                     <td class="headerEcn" width="80%">
                         <b>Reason Code - Change Description</b> : ${ecn.changeDescription}
@@ -100,7 +100,7 @@
                                 <#assign ecnPartsList = ecn.ecnParts >
                                 <#list ecnPartsList as part >
                                     <tr style="background-color: ${part.ecnStatusColor}">
-                                        <td class="bodyPart">${part.partNumber}</td>
+                                        <td class="bodyPart"><a href="http://redzone/pdm/masterlog/partdetail.jsp?IMLITM=${part.partNumber}">${part.partNumber}</a></td>
                                         <td class="bodyPart">${part.revNumber}</td>
                                         <td class="bodyPart">${part.ecnStatusText}</td>
                                         <td class="bodyPart">${part.daysAssigned}</td>
