@@ -141,7 +141,7 @@ prod:
     maximumPoolSize: 100
 
   jdeControl:
-    name: JDE_PY910
+    name: JDE_PD910
     db: jde-dbprod
     jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD910
     user: REDZONE
