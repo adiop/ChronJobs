@@ -79,8 +79,8 @@ public class NotificationService {
 
             Notification notification = Notification.builder()
                     .from(Notification.FROM)
-//                    .to(to)
-                    .to("diopa@warn.com")
+                    .to(to)
+//                    .to("diopa@warn.com")
                     .subject(subject)
                     .body(body)
                     .type(Notification.Type.HTML)
