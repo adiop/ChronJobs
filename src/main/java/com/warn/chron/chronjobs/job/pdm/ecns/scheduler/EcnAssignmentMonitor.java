@@ -72,111 +72,66 @@ public class EcnAssignmentMonitor {
                         )
         );
 
-//        ecnAssignmentList.stream().forEach(System.out::println);
+        Map<String, List<EcnAssignment>> ecnAssignmentMap = ecnAssignmentList
+                .stream()
+                .collect(Collectors.groupingBy(EcnAssignment::getApprover));
 
-        System.out.println("Count is : " + ecnAssignmentList.size());
-
-        List<EcnAssignment> getDistinctEcnAssignmentApproverList = ecnAssignmentList.stream().filter(distinctByKey(EcnAssignment::getApprover)).collect(Collectors.toList());
-
-        List<String> getEcnAssignmentApproverList = getDistinctEcnAssignmentApproverList.stream().map(x -> x.getApprover()).collect(Collectors.toList());
-
-        List<EcnAssignment> ecnAssignmentsForSpecificApprover = ecnAssignmentList.stream().filter(ecnAssignment -> ecnAssignment.getApprover().equals("U1650")).collect(Collectors.toList());
-
-//        ecnAssignmentsForSpecificApprover.stream().forEach(System.out::println);
-
-//        getEcnAssignmentApproverList.stream()
-//                .map(approver -> {
-//                    return ecnAssignmentList.stream().filter(ecnAssignment -> ecnAssignment.getApprover().equals(approver)).collect(Collectors.toList());
-//                        }).forEach(System.out::println);
-
-        getEcnAssignmentApproverList.stream()
-                .map(approver -> {
-                    return
-                    ecnAssignmentList.stream().filter(ecnAssignment -> ecnAssignment.getApprover().equals(approver)).collect(Collectors.toList());
-                }).forEach(approverAssignmentList -> {
-                    getAssignedSummaryForTheApprover(approverAssignmentList);
+        ecnAssignmentMap.keySet()
+                .parallelStream()
+                .forEach(approver -> {
+                    List<EcnAssignment> ecnAssignmentApproverList = ecnAssignmentMap.get(approver);
+                    getAssignedSummaryForTheApprover(ecnAssignmentApproverList);
                 });
 
     }
 
     public void getAssignedSummaryForTheApprover (List<EcnAssignment> assignmentList) {
 
+        EcnAssignment assignment = assignmentList.get(0);
+
         EcnSummary ecnSummary = new EcnSummary();
-        ecnSummary.setApprover(assignmentList.get(0).getApprover());
-        ecnSummary.setEmail(assignmentList.get(0).getEmail());
+        ecnSummary.setApprover(assignment.getApprover());
+        ecnSummary.setEmail(assignment.getEmail());
         ecnSummary.setEcns(createEcnListForApprover(assignmentList));
 
         ecnNotificationService.sendEcnSummary(ecnSummary);
 
-        System.out.println(ecnSummary.toString());
-
-        System.out.println("############################################");
-        System.out.println("############################################");
-        System.out.println("############################################");
-        System.out.println("############################################");
-
     }
 
     public List<Ecn> createEcnListForApprover (List<EcnAssignment> ecnAssignmentList) {
-        List<Ecn> ecnList = null;
 
-        for (EcnAssignment assignment : ecnAssignmentList) {
-            if (ecnList == null) {
-                ecnList = new LinkedList<>();
-                Ecn ecn = new Ecn();
-                ecn.setEcnNumber(assignment.getEcnNumber());
-                ecn.setChangeDescription(assignment.getChangeDescription());
+        Map<String, List<EcnAssignment>> ecnPartMap = ecnAssignmentList.stream().collect(Collectors.groupingBy(EcnAssignment::getEcnNumber));
 
-                List<EcnPart> ecnParts = new LinkedList<>();
+        List<Ecn> ecnList = ecnPartMap.keySet()
+                .stream()
+                .map(ecnNumber -> {
 
-                EcnPart ecnPart = new EcnPart();
-                ecnPart.setPartNumber(assignment.getPartNumber());
-                ecnPart.setRevNumber(assignment.getRevNumber());
-                ecnPart.setDaysAssigned(assignment.getDaysAssigned());
-                ecnPart.setEcnStatusText(assignment.getEcnStatusText());
-                ecnPart.setEcnStatusColor(assignment.getEcnStatusColor());
-                ecnParts.add(ecnPart);
+                    EcnAssignment assignment = ecnPartMap.get(ecnNumber).get(0);
 
-                ecn.setEcnParts(ecnParts);
-
-                ecnList.add(ecn);
-            } else {
-                boolean flag = false;
-                for (Ecn ecn : ecnList) {
-                    if (ecn.getEcnNumber().equalsIgnoreCase(assignment.getEcnNumber())) {
-                        EcnPart ecnPart = new EcnPart();
-                        ecnPart.setPartNumber(assignment.getPartNumber());
-                        ecnPart.setRevNumber(assignment.getRevNumber());
-                        ecnPart.setDaysAssigned(assignment.getDaysAssigned());
-                        ecnPart.setEcnStatusText(assignment.getEcnStatusText());
-                        ecnPart.setEcnStatusColor(assignment.getEcnStatusColor());
-
-                        ecn.getEcnParts().add(ecnPart);
-
-                        flag = true;
-                    }
-                }
-                if (!flag) {
                     Ecn ecn = new Ecn();
                     ecn.setEcnNumber(assignment.getEcnNumber());
                     ecn.setChangeDescription(assignment.getChangeDescription());
 
-                    List<EcnPart> ecnParts = new LinkedList<>();
+                    ecn.setEcnParts(ecnPartMap.get(ecnNumber)
+                            .stream()
+                            .map(ecnAssignment -> {
 
-                    EcnPart ecnPart = new EcnPart();
-                    ecnPart.setPartNumber(assignment.getPartNumber());
-                    ecnPart.setRevNumber(assignment.getRevNumber());
-                    ecnPart.setDaysAssigned(assignment.getDaysAssigned());
-                    ecnPart.setEcnStatusText(assignment.getEcnStatusText());
-                    ecnPart.setEcnStatusColor(assignment.getEcnStatusColor());
-                    ecnParts.add(ecnPart);
+                                EcnPart ecnPart = new EcnPart();
+                                ecnPart.setPartNumber(ecnAssignment.getPartNumber());
+                                ecnPart.setRevNumber(ecnAssignment.getRevNumber());
+                                ecnPart.setDaysAssigned(ecnAssignment.getDaysAssigned());
+                                ecnPart.setEcnStatusText(ecnAssignment.getEcnStatusText());
+                                ecnPart.setEcnStatusColor(ecnAssignment.getEcnStatusColor());
 
-                    ecn.setEcnParts(ecnParts);
+                                return ecnPart;
 
-                    ecnList.add(ecn);
-                }
-            }
-        }
+                            })
+                            .collect(Collectors.toList()));
+
+                    return ecn;
+
+                })
+                .collect(Collectors.toList());
 
         return ecnList;
     }

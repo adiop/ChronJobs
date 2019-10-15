@@ -21,5 +21,4 @@ public @Data class EcnAssignment {
     private String ecnStatusColor;
     private String reasonCode;
     private String changeDescription;
-
 }

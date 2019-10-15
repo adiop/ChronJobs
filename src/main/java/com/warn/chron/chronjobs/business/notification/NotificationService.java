@@ -42,7 +42,7 @@ public class NotificationService {
         return notificationServiceTemplate.sendEmail(to, subject, body);
     }
 
-    public  String generateNotificationBody(String template, Map<String, Object> input) {
+    public String generateNotificationBody(String template, Map<String, Object> input) {
 
         String generatedCode = null;
 
@@ -67,18 +67,7 @@ public class NotificationService {
     }
 
     @Component
-//    @PropertySource("classpath:notification.${spring.profiles.active}.properties")
     public class NotificationServiceTemplate {
-
-//        private String protocol;
-//
-//        private String host;
-//
-//        private String port;
-//
-//        private String urlPrefix;
-//
-//        private String subject;
 
         private RestTemplate restTemplate;
 
@@ -89,11 +78,12 @@ public class NotificationService {
         public Boolean sendEmail(String to, String subject, String body) {
 
             Notification notification = Notification.builder()
-                    .from("Notification <notification@warn.com>")
+                    .from(Notification.FROM)
 //                    .to(to)
                     .to("diopa@warn.com")
                     .subject(subject)
                     .body(body)
+                    .type(Notification.Type.HTML)
                     .build();
 
             return sendEmail(notification);
@@ -102,10 +92,7 @@ public class NotificationService {
 
         public Boolean sendEmail(Notification notification) {
 
-            notification.setFrom(Notification.FROM);
             notification.setSubject(environmentConfig.getNotificationRestService().getSubject() + " " + notification.getSubject());
-            notification.setType(Notification.Type.HTML);
-            notification.setCc(notification.getCc());
 
             Executors.newSingleThreadExecutor().submit(() -> {
 
