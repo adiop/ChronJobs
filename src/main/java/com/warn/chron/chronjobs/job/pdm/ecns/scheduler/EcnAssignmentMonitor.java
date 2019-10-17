@@ -43,7 +43,7 @@ public class EcnAssignmentMonitor {
     @Autowired
     private EcnNotificationService ecnNotificationService;
 
-    @Scheduled(fixedRate = 1000000)
+//    @Scheduled(fixedRate = 1000000)
     public void execute() {
         String query = QUERY
                 .replaceAll("%DB_INTRANET%",dbApplicationConfig.getIntranet().getDb())
