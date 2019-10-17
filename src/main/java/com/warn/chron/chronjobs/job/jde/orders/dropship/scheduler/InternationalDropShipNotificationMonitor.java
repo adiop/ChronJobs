@@ -1,13 +1,17 @@
 package com.warn.chron.chronjobs.job.jde.orders.dropship.scheduler;
 
 import com.warn.chron.chronjobs.application.common.ApplicationEnvironmentConfig;
+import com.warn.chron.chronjobs.job.jde.orders.dropship.business.DropShipNotificationService;
+import com.warn.chron.chronjobs.job.jde.orders.dropship.entities.international.DropShipInternational;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -37,10 +41,37 @@ public class InternationalDropShipNotificationMonitor {
     @NonNull
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
-    @Scheduled(fixedRate = 1000000)
+    @NonNull
+    private DropShipNotificationService dropShipNotificationService;
+
+//    @Scheduled(fixedRate = 1000000)
     public void execute() {
+        checkForShipment(getOrdersToBeShippedTodayQuery(),"International Drop Ship Notification");
 
+        checkForShipment(getOrdersToBePickedYesterday(),"Reminder Scheduled Shipment Past Due International Drop Ship Notification");
 
+        checkForShipment(getOrdersToBePickedIn7Days(), "Reminder Scheduled Shipment Pending International Drop Ship Notification");
+
+    }
+
+    public void checkForShipment (String query, String subject) {
+        List<DropShipInternational> dropShipInternationalList = jdeBusinessJdbcTemplate.query(
+                query,
+                (rs, rowNum) ->
+                    new DropShipInternational(
+                            rs.getString("SDSHAN"),
+                            rs.getString("Customer"),
+                            rs.getString("SDDOCO"),
+                            rs.getString("SDDCTO"),
+                            rs.getString("SDLITM"),
+                            rs.getString("SDUORG"),
+                            rs.getString("SDPDDJ"),
+                            rs.getString("Today"),
+                            rs.getString("Carrier")
+                    )
+        );
+
+        dropShipNotificationService.sendInternationalDropShipNotification(dropShipInternationalList, subject);
     }
 
     public String getOrdersToBeShippedTodayQuery() {

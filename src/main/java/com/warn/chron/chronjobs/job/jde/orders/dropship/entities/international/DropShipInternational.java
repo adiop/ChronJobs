@@ -1,7 +1,9 @@
 package com.warn.chron.chronjobs.job.jde.orders.dropship.entities.international;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@AllArgsConstructor
 public @Data class DropShipInternational {
     private String SDSHAN;
     private String Customer;
