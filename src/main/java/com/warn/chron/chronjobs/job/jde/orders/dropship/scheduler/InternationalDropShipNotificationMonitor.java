@@ -44,7 +44,8 @@ public class InternationalDropShipNotificationMonitor {
     @NonNull
     private DropShipNotificationService dropShipNotificationService;
 
-    @Scheduled(fixedRate = 1000000)
+//    @Scheduled(fixedRate = 1000000)
+    @Scheduled(cron = "0 0 23 * * ?")
     public void execute() {
         checkForShipment(getOrdersToBeShippedTodayQuery(),"International Drop Ship Notification");
 
