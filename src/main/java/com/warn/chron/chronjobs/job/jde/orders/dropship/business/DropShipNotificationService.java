@@ -20,7 +20,9 @@ public class DropShipNotificationService {
     private NotificationService notificationService;
 
     public void sendInternationalDropShipNotification(List<DropShipInternational> dropShipInternationalList, String subject) {
-
+        System.out.println("#######################");
+        System.out.println(dropShipInternationalList.toString());
+        System.out.println("#######################");
         try {
 
             Map<String, Object> objectMap = new HashMap<>();

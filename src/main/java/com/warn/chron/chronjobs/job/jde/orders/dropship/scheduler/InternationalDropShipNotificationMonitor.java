@@ -44,7 +44,7 @@ public class InternationalDropShipNotificationMonitor {
     @NonNull
     private DropShipNotificationService dropShipNotificationService;
 
-//    @Scheduled(fixedRate = 1000000)
+    @Scheduled(fixedRate = 1000000)
     public void execute() {
         checkForShipment(getOrdersToBeShippedTodayQuery(),"International Drop Ship Notification");
 
@@ -71,7 +71,8 @@ public class InternationalDropShipNotificationMonitor {
                     )
         );
 
-        dropShipNotificationService.sendInternationalDropShipNotification(dropShipInternationalList, subject);
+        if (!dropShipInternationalList.isEmpty())
+            dropShipNotificationService.sendInternationalDropShipNotification(dropShipInternationalList, subject);
     }
 
     public String getOrdersToBeShippedTodayQuery() {
