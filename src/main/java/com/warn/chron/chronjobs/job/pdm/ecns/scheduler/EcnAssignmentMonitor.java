@@ -44,7 +44,7 @@ public class EcnAssignmentMonitor {
     private EcnNotificationService ecnNotificationService;
 
 //    @Scheduled(fixedRate = 1000000)
-    @Scheduled(cron = "0 40 5 * * ?")
+//    @Scheduled(cron = "0 40 5 * * ?")
     public void execute() {
         String query = QUERY
                 .replaceAll("%DB_INTRANET%",dbApplicationConfig.getIntranet().getDb())

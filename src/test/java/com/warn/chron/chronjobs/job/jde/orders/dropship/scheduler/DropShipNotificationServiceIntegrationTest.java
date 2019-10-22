@@ -1,6 +1,7 @@
 package com.warn.chron.chronjobs.job.jde.orders.dropship.scheduler;
 
 import com.warn.chron.chronjobs.job.jde.orders.dropship.business.DropShipNotificationService;
+import com.warn.chron.chronjobs.job.jde.orders.dropship.entities.domestic.DropShipDomestic;
 import com.warn.chron.chronjobs.job.jde.orders.dropship.entities.international.DropShipInternational;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -44,5 +44,32 @@ public class DropShipNotificationServiceIntegrationTest {
 
         dropShipNotificationService.sendInternationalDropShipNotification(dropShipInternationalList, subject);
     }
+
+    @Test
+    public void sendDomesticDropShipNotificationTest() {
+
+        List<DropShipDomestic> dropShipDomesticList = IntStream.range(0,1)
+                                                                .mapToObj(i -> {
+                                                                    DropShipDomestic dropShipDomestic = new DropShipDomestic("368815",
+                                                                            "SO",
+                                                                            "12020",
+                                                                            "103241",
+                                                                            "6518908                  ",
+                                                                            "2019-08-27 00:00:00.000",
+                                                                            "1012959",
+                                                                            "480333");
+
+                                                                    dropShipDomestic.setTrackingNumber("480333");
+                                                                    dropShipDomestic.setAccountName("Cabela's Inc ");
+
+                                                                    return dropShipDomestic;
+
+                                                                }).collect(Collectors.toList());
+
+        String subject = "Order Ship Notification - Cabelas";
+
+        dropShipNotificationService.sendDomesticDropShipNotification(dropShipDomesticList,subject);
+    }
+
 
 }
