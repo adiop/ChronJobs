@@ -58,8 +58,8 @@ public class DomesticDropShipNotificationMonitor {
     @NonNull
     private DropShipNotificationService dropShipNotificationService;
 
-    @Scheduled(fixedRate = 1000000)
-//    @Scheduled(cron = "0 0 21 * * ?")
+//    @Scheduled(fixedRate = 1000000)
+    @Scheduled(cron = "0 0 21 * * ?")
     public void execute() {
 
         processOrders("12020",false,"Order Ship Notification - Cabelas"); //Cabelas
