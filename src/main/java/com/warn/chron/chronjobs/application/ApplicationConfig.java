@@ -42,6 +42,12 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public DataSource partnersDataSource() {return environmentConfig.getPartners().getDataSource(); }
+
+    @Bean
+    public JdbcTemplate partnersJdbcTemplate(DataSource partnersDataSource) { return new JdbcTemplate(partnersDataSource); }
+
+    @Bean
     public DataSource jdeBusinessDataSource() {
         return environmentConfig.getJdeBusiness().getDataSource();
     }

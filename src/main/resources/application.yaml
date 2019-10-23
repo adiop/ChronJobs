@@ -39,6 +39,19 @@ staging:
     minimumIdle: 25
     maximumPoolSize: 100
 
+  partners:
+    name: PARTNERS
+    db: partners
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=partners
+    user: PRODWRITE
+    password: wRit3T00
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
   jdeBusiness:
     name: CRPDTA
     db: CRPDTA
@@ -120,6 +133,19 @@ prod:
     jdbcUrl: jdbc:sqlserver://CRMSQL:1433;encrypt=false;sslProtocol=TLSv1;databaseName={Warn_Industries_Inc__MSCRM}
     user: sa
     password: Chickens0up
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  partners:
+    name: PARTNERS
+    db: partners
+    jdbcUrl: jdbc:sqlserver://warn-db:1433;encrypt=false;sslProtocol=TLSv1;databaseName=partners
+    user: PRODWRITE
+    password: wRit3T00
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048

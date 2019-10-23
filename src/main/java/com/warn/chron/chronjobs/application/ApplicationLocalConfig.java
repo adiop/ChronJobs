@@ -18,6 +18,8 @@ public @Data class ApplicationLocalConfig implements ApplicationEnvironmentConfi
 
     private DatabaseInformation crm;
 
+    private DatabaseInformation partners;
+
     private DatabaseInformation jdeBusiness;
 
     private DatabaseInformation jdeControl;

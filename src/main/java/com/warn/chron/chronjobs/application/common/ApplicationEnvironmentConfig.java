@@ -10,6 +10,8 @@ public interface ApplicationEnvironmentConfig {
 
     public DatabaseInformation getCrm();
 
+    public DatabaseInformation getPartners();
+
     public DatabaseInformation getJdeBusiness();
 
     public DatabaseInformation getJdeControl();
