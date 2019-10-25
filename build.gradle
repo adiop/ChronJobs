@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
 
 	// https://mvnrepository.com/artifact/net.sourceforge.jtds/jtds
 	compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '7.4.0.jre8'
