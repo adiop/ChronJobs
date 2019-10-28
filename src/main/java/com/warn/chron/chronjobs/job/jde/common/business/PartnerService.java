@@ -95,20 +95,6 @@ public class PartnerService {
     @NonNull
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
-
-    // Create a cache for PartnerInformation based on their account number
-//    LoadingCache<String, PartnerInformation> partnerInformationCache =
-//                CacheBuilder.newBuilder()
-//                .maximumSize(300)
-//                .expireAfterAccess(1, TimeUnit.HOURS)
-//                .build(
-//                        new CacheLoader<String, PartnerInformation>() {
-//                            @Override
-//                            public PartnerInformation load(String key) throws Exception {
-//                                return getPartnerInformation(key);
-//                            }
-//                        });
-
     public Map<String, PartnerInformation> getAllPartnerInformation() {
 
         try {
