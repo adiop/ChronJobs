@@ -28,4 +28,6 @@ public @Data class ApplicationProdConfig implements ApplicationEnvironmentConfig
 
     private RestServiceConfig notificationRestService;
 
+    private RestServiceConfig notificationAuthenticatedRestService;
+
 }

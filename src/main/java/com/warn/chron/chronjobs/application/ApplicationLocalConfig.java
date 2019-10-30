@@ -28,4 +28,6 @@ public @Data class ApplicationLocalConfig implements ApplicationEnvironmentConfi
 
     private RestServiceConfig notificationRestService;
 
+    private RestServiceConfig notificationAuthenticatedRestService;
+
 }

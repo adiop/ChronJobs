@@ -19,4 +19,6 @@ public interface ApplicationEnvironmentConfig {
     public DatabaseInformation getJdeSystem();
 
     public RestServiceConfig getNotificationRestService();
+
+    public RestServiceConfig getNotificationAuthenticatedRestService();
 }

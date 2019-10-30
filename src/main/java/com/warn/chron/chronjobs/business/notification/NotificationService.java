@@ -109,6 +109,24 @@ public class NotificationService {
             return Boolean.TRUE;
         }
 
+        public Boolean sendAuthenticatedEmail (Notification notification) {
+            notification.setSubject(environmentConfig.getNotificationAuthenticatedRestService().getSubject() + " " + notification.getSubject());
+
+            Executors.newSingleThreadExecutor().submit(() -> {
+
+                try {
+                    log.info("an email was sent {}", notification.toString());
+                    String uri = getUri().toUriString();
+                    restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
+                } catch (Exception e) {
+                    log.error("An error has occurred while trying to send the notification", e);
+                }
+
+            });
+
+            return Boolean.TRUE;
+        }
+
         private UriComponentsBuilder getUri() {
 
             return UriComponentsBuilder.newInstance()

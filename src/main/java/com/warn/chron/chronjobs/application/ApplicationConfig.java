@@ -86,4 +86,7 @@ public class ApplicationConfig {
         return environmentConfig.getNotificationRestService();
     }
 
+    @Bean
+    public RestServiceConfig notificationAuthenticatedRestService() { return environmentConfig.getNotificationAuthenticatedRestService(); }
+
 }

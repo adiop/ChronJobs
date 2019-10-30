@@ -99,6 +99,14 @@ staging:
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: (TEST EMAIL)
 
+  notificationAuthenticatedRestService:
+    protocol: http
+    hostName: warn-apiserv01
+    port: 6001
+    urlPrefix: /warn/util/api/v1/notification/autenticated/
+    key: 583eccb2-1f67-11e9-ab14-d663bd873d93
+    subject: (TEST EMAIL)
+
 ---
 prod:
   intranet:
@@ -197,5 +205,13 @@ prod:
     hostName: warn-apiserv01
     port: 7001
     urlPrefix: /warn/util/api/v1/notification/
+    key: 583eccb2-1f67-11e9-ab14-d663bd873d93
+    subject: ""
+
+  notificationAuthenticatedRestService:
+    protocol: http
+    hostName: warn-apiserv01
+    port: 7001
+    urlPrefix: /warn/util/api/v1/notification/autenticated/
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: ""
