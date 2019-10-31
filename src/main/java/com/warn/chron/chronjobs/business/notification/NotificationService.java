@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -96,19 +97,16 @@ public class NotificationService {
 
             notification.setSubject(environmentConfig.getNotificationRestService().getSubject() + " " + notification.getSubject());
 
-            Executors.newSingleThreadExecutor().submit(() -> {
+            try {
+                log.info("an email was sent {}", notification.toString());
+                String uri = getUri().toUriString();
+                ResponseEntity<Boolean> responseEntity = restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
+                return responseEntity.getBody();
+            } catch (Exception e) {
+                log.error("An error has occurred while trying to send the notification", e);
+            }
 
-                try {
-                    log.info("an email was sent {}", notification.toString());
-                    String uri = getUri().toUriString();
-                    restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
-                } catch (Exception e) {
-                    log.error("An error has occurred while trying to send the notification", e);
-                }
-
-            });
-
-            return Boolean.TRUE;
+            return Boolean.FALSE;
         }
 
         public Boolean sendAuthenticatedEmail (Notification notification) {
@@ -132,19 +130,19 @@ public class NotificationService {
         private UriComponentsBuilder getUri() {
 
             return UriComponentsBuilder.newInstance()
-                    .scheme(environmentConfig.getNotificationAuthenticatedRestService().getProtocol())
-                    .host(environmentConfig.getNotificationAuthenticatedRestService().getHostName())
-                    .port(environmentConfig.getNotificationAuthenticatedRestService().getPort())
-                    .path(environmentConfig.getNotificationAuthenticatedRestService().getUrlPrefix());
+                    .scheme(environmentConfig.getNotificationRestService().getProtocol())
+                    .host(environmentConfig.getNotificationRestService().getHostName())
+                    .port(environmentConfig.getNotificationRestService().getPort())
+                    .path(environmentConfig.getNotificationRestService().getUrlPrefix());
         }
 
         private UriComponentsBuilder getAuthenticatedUri() {
 
             return UriComponentsBuilder.newInstance()
-                    .scheme(environmentConfig.getNotificationRestService().getProtocol())
-                    .host(environmentConfig.getNotificationRestService().getHostName())
-                    .port(environmentConfig.getNotificationRestService().getPort())
-                    .path(environmentConfig.getNotificationRestService().getUrlPrefix());
+                    .scheme(environmentConfig.getNotificationAuthenticatedRestService().getProtocol())
+                    .host(environmentConfig.getNotificationAuthenticatedRestService().getHostName())
+                    .port(environmentConfig.getNotificationAuthenticatedRestService().getPort())
+                    .path(environmentConfig.getNotificationAuthenticatedRestService().getUrlPrefix());
         }
 
         private <T> HttpEntity<T> getHttpEntity(T body) {
