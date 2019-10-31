@@ -10,6 +10,8 @@ public @Data class Notification {
 
     public static final String FROM = "Notification <notification@warn.com>";
 
+    public static final String AUTHENTICATED_FROM = "Notification <redzone@warn.com>";
+
     private String from;
 
     private String to;

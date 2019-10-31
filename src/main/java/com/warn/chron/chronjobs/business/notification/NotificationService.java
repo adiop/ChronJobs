@@ -1,5 +1,6 @@
 package com.warn.chron.chronjobs.business.notification;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.warn.chron.chronjobs.application.common.ApplicationEnvironmentConfig;
 import com.warn.chron.chronjobs.application.common.RestServiceConfig;
 import com.warn.chron.chronjobs.job.pdm.ecns.entities.EcnSummary;
@@ -43,6 +44,10 @@ public class NotificationService {
         return notificationServiceTemplate.sendEmail(to, subject, body);
     }
 
+    public Boolean sendAuthenticatedEmail(String to, String subject, String body) {
+        return notificationServiceTemplate.sendAuthenticatedEmail(to, subject, body);
+    }
+
     public String generateNotificationBody(String template, Map<String, Object> input) {
 
         String generatedCode = null;
@@ -77,13 +82,11 @@ public class NotificationService {
         }
 
         public Boolean sendEmail(String to, String subject, String body) {
-            List<String> ccList = new LinkedList<>();
-            ccList.add("souzad@warn.com");
 
             Notification notification = Notification.builder()
                     .from(Notification.FROM)
                     .to((environmentConfig.getNotificationRestService().getRecipientTestEmail().isEmpty() ? to : environmentConfig.getNotificationRestService().getRecipientTestEmail()))
-                    .cc(ccList)
+                    .cc(environmentConfig.getNotificationRestService().getRecipientCCTestEmailList())
                     .subject(subject)
                     .body(body)
                     .type(Notification.Type.HTML)
@@ -109,22 +112,33 @@ public class NotificationService {
             return Boolean.FALSE;
         }
 
+        public Boolean sendAuthenticatedEmail (String to, String subject, String body) {
+
+            Notification notification = Notification.builder()
+                    .from(Notification.AUTHENTICATED_FROM)
+                    .to((environmentConfig.getNotificationRestService().getRecipientTestEmail().isEmpty() ? to : environmentConfig.getNotificationRestService().getRecipientTestEmail()))
+                    .cc(environmentConfig.getNotificationAuthenticatedRestService().getRecipientCCTestEmailList())
+                    .subject(subject)
+                    .body(body)
+                    .type(Notification.Type.HTML)
+                    .build();
+
+            return sendAuthenticatedEmail(notification);
+        }
+
         public Boolean sendAuthenticatedEmail (Notification notification) {
             notification.setSubject(environmentConfig.getNotificationAuthenticatedRestService().getSubject() + " " + notification.getSubject());
 
-            Executors.newSingleThreadExecutor().submit(() -> {
+            try {
+                log.info("an email was sent {}", notification.toString());
+                String uri = getAuthenticatedUri().toUriString();
+                ResponseEntity<Boolean> responseEntity = restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
+                return responseEntity.getBody();
+            } catch (Exception e) {
+                log.error("An error has occurred while trying to send the notification", e);
+            }
 
-                try {
-                    log.info("an email was sent {}", notification.toString());
-                    String uri = getAuthenticatedUri().toUriString();
-                    restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
-                } catch (Exception e) {
-                    log.error("An error has occurred while trying to send the notification", e);
-                }
-
-            });
-
-            return Boolean.TRUE;
+            return Boolean.FALSE;
         }
 
         private UriComponentsBuilder getUri() {

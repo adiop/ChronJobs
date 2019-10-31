@@ -20,11 +20,22 @@ public class EmailTest {
     @Test
     public void testSendEmail() {
 
-        String to = "souzadd@warn.com";
+        String to = "diopa@warn.com";
         String subject = "Test Email - Test Subject";
         String body = "Test Email - Test Body";
 
         assertTrue(notificationService.sendEmail(to, subject, body));
 
+    }
+
+    @Test
+    public void testSendAuthenticatedEmail() {
+
+        String to = "diopa@warn.com";
+        String subject = "Test Email - Test Subject";
+        String body = "Test Email - Test Body";
+
+
+        assertTrue(notificationService.sendAuthenticatedEmail(to, subject, body));
     }
 }

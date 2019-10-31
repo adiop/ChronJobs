@@ -99,6 +99,8 @@ staging:
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: (TEST EMAIL)
     recipientTestEmail: "diopa@warn.com"
+    recipientCCTestEmailList:
+      - diopa@warn.com
 
   notificationAuthenticatedRestService:
     protocol: http
@@ -107,6 +109,9 @@ staging:
     urlPrefix: /warn/util/api/v1/notification/autenticated/
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: (TEST EMAIL)
+    recipientTestEmail: "diopa@warn.com"
+    recipientCCTestEmailList:
+      - diopa@warn.com
 
 ---
 prod:
@@ -208,6 +213,9 @@ prod:
     urlPrefix: /warn/util/api/v1/notification/
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: ""
+    recipientTestEmail: ""
+    recipientCCTestEmailList:
+      - diopa@warn.com
 
   notificationAuthenticatedRestService:
     protocol: http
@@ -217,3 +225,5 @@ prod:
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: ""
     recipientTestEmail: ""
+    recipientCCTestEmailList:
+      - diopa@warn.com
