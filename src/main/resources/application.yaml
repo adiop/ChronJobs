@@ -98,6 +98,7 @@ staging:
     urlPrefix: /warn/util/api/v1/notification/
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: (TEST EMAIL)
+    recipientTestEmail: "diopa@warn.com"
 
   notificationAuthenticatedRestService:
     protocol: http
@@ -215,3 +216,4 @@ prod:
     urlPrefix: /warn/util/api/v1/notification/autenticated/
     key: 583eccb2-1f67-11e9-ab14-d663bd873d93
     subject: ""
+    recipientTestEmail: ""

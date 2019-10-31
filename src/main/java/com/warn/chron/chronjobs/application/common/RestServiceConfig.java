@@ -17,6 +17,8 @@ public @Data class RestServiceConfig {
 
     private String subject;
 
+    private String recipientTestEmail;
+
     public UriComponentsBuilder getUri() {
         return UriComponentsBuilder.newInstance().scheme(getProtocol()).host(getHostName()).port(port).path(getUrlPrefix());
     }

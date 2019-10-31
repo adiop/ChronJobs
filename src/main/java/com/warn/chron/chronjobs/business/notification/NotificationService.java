@@ -76,11 +76,13 @@ public class NotificationService {
         }
 
         public Boolean sendEmail(String to, String subject, String body) {
+            List<String> ccList = new LinkedList<>();
+            ccList.add("souzad@warn.com");
 
             Notification notification = Notification.builder()
                     .from(Notification.FROM)
-//                    .to(to)
-                    .to("diopa@warn.com")
+                    .to((environmentConfig.getNotificationRestService().getRecipientTestEmail().isEmpty() ? to : environmentConfig.getNotificationRestService().getRecipientTestEmail()))
+                    .cc(ccList)
                     .subject(subject)
                     .body(body)
                     .type(Notification.Type.HTML)
@@ -116,7 +118,7 @@ public class NotificationService {
 
                 try {
                     log.info("an email was sent {}", notification.toString());
-                    String uri = getUri().toUriString();
+                    String uri = getAuthenticatedUri().toUriString();
                     restTemplate.exchange(uri, HttpMethod.POST, getHttpEntity(notification), Boolean.class);
                 } catch (Exception e) {
                     log.error("An error has occurred while trying to send the notification", e);
@@ -128,6 +130,15 @@ public class NotificationService {
         }
 
         private UriComponentsBuilder getUri() {
+
+            return UriComponentsBuilder.newInstance()
+                    .scheme(environmentConfig.getNotificationAuthenticatedRestService().getProtocol())
+                    .host(environmentConfig.getNotificationAuthenticatedRestService().getHostName())
+                    .port(environmentConfig.getNotificationAuthenticatedRestService().getPort())
+                    .path(environmentConfig.getNotificationAuthenticatedRestService().getUrlPrefix());
+        }
+
+        private UriComponentsBuilder getAuthenticatedUri() {
 
             return UriComponentsBuilder.newInstance()
                     .scheme(environmentConfig.getNotificationRestService().getProtocol())
