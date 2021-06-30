@@ -5,6 +5,8 @@ import com.warn.chron.chronjobs.job.jde.common.entities.PartnerInformation;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -93,6 +95,8 @@ public class PartnerService {
     private ApplicationEnvironmentConfig dbApplicationConfig;
 
     @NonNull
+    @Autowired
+    @Qualifier("jdeBusinessJdbcTemplate")
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
     public Map<String, PartnerInformation> getAllPartnerInformation() {

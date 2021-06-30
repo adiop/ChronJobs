@@ -20,7 +20,11 @@ public @Data class ApplicationLocalConfig implements ApplicationEnvironmentConfi
 
     private DatabaseInformation partners;
 
+    private DatabaseInformation warnApplication;
+
     private DatabaseInformation jdeBusiness;
+
+    private DatabaseInformation jdeTable;
 
     private DatabaseInformation jdeControl;
 

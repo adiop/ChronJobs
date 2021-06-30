@@ -52,6 +52,19 @@ staging:
     minimumIdle: 25
     maximumPoolSize: 100
 
+  warnApplication:
+    name: WarnApplication
+    db: WarnApplication
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=WarnApplication
+    user: PRODWRITE
+    password: wRit3T00
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
   jdeBusiness:
     name: CRPDTA
     db: CRPDTA
@@ -82,6 +95,19 @@ staging:
     name: JDE910
     db: jde-dbtest
     jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
+    user: REDZONE
+    password: 2writesometimes
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
+  jdeTable:
+    name: JDE_CRP
+    db: JDE_CRP
+    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
     user: REDZONE
     password: 2writesometimes
     cachePrepStmts: true
@@ -167,6 +193,19 @@ prod:
     minimumIdle: 25
     maximumPoolSize: 100
 
+    warnApplication:
+      name: WarnApplication
+      db: WarnApplication
+      jdbcUrl: jdbc:sqlserver://warn-db:1433;encrypt=false;sslProtocol=TLSv1;databaseName=WarnApplication
+      user: PRODWRITE
+      password: wRit3T00
+      cachePrepStmts: true
+      prepStmtCacheSize: 256
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      minimumIdle: 25
+      maximumPoolSize: 100
+
   jdeBusiness:
     name: PRODDTA
     db: PRODDTA
@@ -205,6 +244,20 @@ prod:
     useServerPrepStmts: true
     minimumIdle: 25
     maximumPoolSize: 100
+
+  jdeTable:
+    name: JDE_PRODUCTION
+    db: JDE_PRODUCTION
+    jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PRODUCTION
+    user: REDZONE
+    password: 2writesometimes
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
+
 
   notificationRestService:
     protocol: http
