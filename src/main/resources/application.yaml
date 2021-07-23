@@ -68,9 +68,9 @@ staging:
   jdeBusiness:
     name: CRPDTA
     db: CRPDTA
-    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
     user: REDZONE
-    password: 2writesometimes
+    password: "XLO6rByc1*^o3T$y"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -79,11 +79,11 @@ staging:
     maximumPoolSize: 100
 
   jdeControl:
-    name: JDE_PY910
-    db: jde-dbtest
-    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PY910
+    name: JDE_PD920
+    db: JDE1VSQL01
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD920
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -92,11 +92,11 @@ staging:
     maximumPoolSize: 100
 
   jdeSystem:
-    name: JDE910
-    db: jde-dbtest
-    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
+    name: JDE920
+    db: JDE1VSQL01
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE920
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -107,9 +107,9 @@ staging:
   jdeTable:
     name: JDE_CRP
     db: JDE_CRP
-    jdbcUrl: jdbc:sqlserver://jde-dbtest:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
     user: REDZONE
-    password: 2writesometimes
+    password: "XLO6rByc1*^o3T$y"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -209,9 +209,9 @@ prod:
   jdeBusiness:
     name: PRODDTA
     db: PRODDTA
-    jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PRODUCTION
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PRODUCTION
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -220,11 +220,11 @@ prod:
     maximumPoolSize: 100
 
   jdeControl:
-    name: JDE_PD910
-    db: jde-dbprod
-    jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD910
+    name: JDE_PD920
+    db: JDE1VSQL01
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD910
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -234,10 +234,10 @@ prod:
 
   jdeSystem:
     name: JDE910
-    db: jde-dbprod
-    jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
+    db: JDE1VSQL01
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
@@ -248,9 +248,9 @@ prod:
   jdeTable:
     name: JDE_PRODUCTION
     db: JDE_PRODUCTION
-    jdbcUrl: jdbc:sqlserver://jde-dbprod:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PRODUCTION
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PRODUCTION
     user: REDZONE
-    password: 2writesometimes
+    password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
     prepStmtCacheSize: 256
     prepStmtCacheSqlLimit: 2048
