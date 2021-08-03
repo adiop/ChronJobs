@@ -222,7 +222,7 @@ prod:
   jdeControl:
     name: JDE_PD920
     db: JDE1VSQL01
-    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD910
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD920
     user: REDZONE
     password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
@@ -233,9 +233,9 @@ prod:
     maximumPoolSize: 100
 
   jdeSystem:
-    name: JDE910
+    name: JDE920
     db: JDE1VSQL01
-    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE910
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE920
     user: REDZONE
     password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
