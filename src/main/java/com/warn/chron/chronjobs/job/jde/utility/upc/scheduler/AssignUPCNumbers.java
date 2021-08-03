@@ -143,7 +143,7 @@ public class AssignUPCNumbers {
 
         // update item master with new UPC codes.
 
-        updateItemMasterWithNewUPCCodes ();
+        //updateItemMasterWithNewUPCCodes ();
 
         // drop working table
         dropf4101WkTable();
