@@ -42,21 +42,21 @@ public class ApplicationConfig {
         return new JdbcTemplate(pdmDataSource);
     }
 
-    @Bean(name = "crmDataSource")
-    @Qualifier("crmDataSource")
-    public DataSource crmDataSource() {
-        return environmentConfig.getCrm().getDataSource();
-    }
+//    @Bean(name = "crmDataSource")
+//    @Qualifier("crmDataSource")
+//    public DataSource crmDataSource() {
+//        return environmentConfig.getCrm().getDataSource();
+//    }
 
 //    @Bean(name="crm")
 //    public JdbcTemplate crmJdbcTemplate(DataSource crmDataSource) {
 //        return new JdbcTemplate(crmDataSource);
 //    }
 
-    @Bean(name="crmJdbcTemplate")
-    public JdbcTemplate crmJdbcTemplate(@Qualifier("crmDataSource") DataSource crmDataSource) {
-        return new JdbcTemplate(crmDataSource);
-    }
+//    @Bean(name="crmJdbcTemplate")
+//    public JdbcTemplate crmJdbcTemplate(@Qualifier("crmDataSource") DataSource crmDataSource) {
+//        return new JdbcTemplate(crmDataSource);
+//    }
 
     @Bean(name = "partnersDataSource")
     @Qualifier("partnersDataSource")
@@ -129,19 +129,19 @@ public class ApplicationConfig {
         return new JdbcTemplate(jdeSystemDataSource);
     }
 
-    @Bean(name = "warnApplicationDataSource")
-    @Qualifier("warnApplicationDataSource")
-    public DataSource warnApplicationDataSource () {return environmentConfig.getWarnApplication().getDataSource();}
+//    @Bean(name = "warnApplicationDataSource")
+//    @Qualifier("warnApplicationDataSource")
+//    public DataSource warnApplicationDataSource () {return environmentConfig.getWarnApplication().getDataSource();}
 
 //    @Bean(name="warnApplicationJdbcTemplate")
 //    public JdbcTemplate WarnApplicationJdbcTemplate(DataSource warnApplicationDataSource) {
 //        return new JdbcTemplate((warnApplicationDataSource));
 //    }
 
-    @Bean(name="warnApplicationJdbcTemplate")
-    public JdbcTemplate WarnApplicationJdbcTemplate(@Qualifier("warnApplicationDataSource") DataSource warnApplicationDataSource) {
-        return new JdbcTemplate((warnApplicationDataSource));
-    }
+//    @Bean(name="warnApplicationJdbcTemplate")
+//    public JdbcTemplate WarnApplicationJdbcTemplate(@Qualifier("warnApplicationDataSource") DataSource warnApplicationDataSource) {
+//        return new JdbcTemplate((warnApplicationDataSource));
+//    }
 
 
     /**
