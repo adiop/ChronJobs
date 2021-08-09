@@ -129,19 +129,14 @@ public class ApplicationConfig {
         return new JdbcTemplate(jdeSystemDataSource);
     }
 
-//    @Bean(name = "warnApplicationDataSource")
-//    @Qualifier("warnApplicationDataSource")
-//    public DataSource warnApplicationDataSource () {return environmentConfig.getWarnApplication().getDataSource();}
+    @Bean(name = "warnApplicationDataSource")
+    @Qualifier("warnApplicationDataSource")
+    public DataSource warnApplicationDataSource () {return environmentConfig.getWarnApplication().getDataSource();}
 
-//    @Bean(name="warnApplicationJdbcTemplate")
-//    public JdbcTemplate WarnApplicationJdbcTemplate(DataSource warnApplicationDataSource) {
-//        return new JdbcTemplate((warnApplicationDataSource));
-//    }
-
-//    @Bean(name="warnApplicationJdbcTemplate")
-//    public JdbcTemplate WarnApplicationJdbcTemplate(@Qualifier("warnApplicationDataSource") DataSource warnApplicationDataSource) {
-//        return new JdbcTemplate((warnApplicationDataSource));
-//    }
+    @Bean(name="warnApplicationJdbcTemplate")
+    public JdbcTemplate warnApplicationJdbcTemplate(@Qualifier("warnApplicationDataSource") DataSource warnApplicationDataSource) {
+        return new JdbcTemplate((warnApplicationDataSource));
+    }
 
 
     /**

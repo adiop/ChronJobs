@@ -3,7 +3,8 @@ staging:
   intranet:
     name: INTRANET
     db: Intranet
-    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=Intranet
+#    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=Intranet
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;databaseName=Intranet
     user: PRODWRITE
     password: wRit3T00
     cachePrepStmts: true
@@ -16,7 +17,8 @@ staging:
   pdm:
     name: PDM
     db: PDM
-    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=PDM
+#    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=PDM
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;databaseName=PDM
     user: PRODWRITE
     password: wRit3T00
     cachePrepStmts: true
@@ -29,7 +31,8 @@ staging:
   crm:
     name: CRM
     db: CRMSQL
-    jdbcUrl: jdbc:sqlserver://CRMSQL:1433;encrypt=false;sslProtocol=TLSv1;databaseName={Warn_Industries_Inc__MSCRM}
+#    jdbcUrl: jdbc:sqlserver://CRMSQL:1433;encrypt=false;sslProtocol=TLSv1;databaseName={Warn_Industries_Inc__MSCRM}
+    jdbcUrl: jdbc:sqlserver://CRMSQL:1433;encrypt=false;databaseName={Warn_Industries_Inc__MSCRM}
     user: sa
     password: Chickens0up
     cachePrepStmts: true
@@ -42,7 +45,8 @@ staging:
   partners:
     name: PARTNERS
     db: partners
-    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=partners
+#    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=partners
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;databaseName=partners
     user: PRODWRITE
     password: wRit3T00
     cachePrepStmts: true
@@ -55,7 +59,8 @@ staging:
   warnApplication:
     name: WarnApplication
     db: WarnApplication
-    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=WarnApplication
+#    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;sslProtocol=TLSv1;databaseName=WarnApplication
+    jdbcUrl: jdbc:sqlserver://warn-testdb:1433;encrypt=false;databaseName=WarnApplication
     user: PRODWRITE
     password: wRit3T00
     cachePrepStmts: true
@@ -68,7 +73,8 @@ staging:
   jdeBusiness:
     name: CRPDTA
     db: CRPDTA
-    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+#    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;databaseName=JDE_CRP
     user: REDZONE
     password: "XLO6rByc1*^o3T$y"
     cachePrepStmts: true
@@ -81,7 +87,8 @@ staging:
   jdeControl:
     name: JDE_PD920
     db: JDE1VSQL01
-    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD920
+#    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_PD920
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;databaseName=JDE_PD920
     user: REDZONE
     password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
@@ -94,7 +101,8 @@ staging:
   jdeSystem:
     name: JDE920
     db: JDE1VSQL01
-    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE920
+#    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE920
+    jdbcUrl: jdbc:sqlserver://JDE1VSQL01:1433;encrypt=false;databaseName=JDE920
     user: REDZONE
     password: "4cPyerhy@aBfP112"
     cachePrepStmts: true
@@ -107,7 +115,8 @@ staging:
   jdeTable:
     name: JDE_CRP
     db: JDE_CRP
-    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+#    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;sslProtocol=TLSv1;databaseName=JDE_CRP
+    jdbcUrl: jdbc:sqlserver://JDE2VSQL01:1433;encrypt=false;databaseName=JDE_CRP
     user: REDZONE
     password: "XLO6rByc1*^o3T$y"
     cachePrepStmts: true
@@ -197,19 +206,19 @@ prod:
     minimumIdle: 25
     maximumPoolSize: 100
 
-    warnApplication:
-      name: warnApplication
-      db: WarnApplication
+  warnApplication:
+    name: WARNAPPLICATION
+    db: WarnApplication
 #      jdbcUrl: jdbc:sqlserver://warn-db:1433;encrypt=false;sslProtocol=TLSv1;databaseName=WarnApplication
-      jdbcUrl: jdbc:sqlserver://warn-db:1433;encrypt=false;databaseName=WarnApplication
-      user: PRODWRITE
-      password: wRit3T00
-      cachePrepStmts: true
-      prepStmtCacheSize: 256
-      prepStmtCacheSqlLimit: 2048
-      useServerPrepStmts: true
-      minimumIdle: 25
-      maximumPoolSize: 100
+    jdbcUrl: jdbc:sqlserver://warn-db:1433;encrypt=false;databaseName=WarnApplication
+    user: PRODWRITE
+    password: wRit3T00
+    cachePrepStmts: true
+    prepStmtCacheSize: 256
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+    minimumIdle: 25
+    maximumPoolSize: 100
 
   jdeBusiness:
     name: PRODDTA

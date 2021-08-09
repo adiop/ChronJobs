@@ -36,7 +36,7 @@ public class MasterlogDrawings {
     private JdbcTemplate pdmJdbcTemplate;
 
 //    @Scheduled(fixedRate = 1000000)
-    @Scheduled(cron = "0 0/20 * * * ?")
+//    @Scheduled(cron = "0 0/20 * * * ?")
     public void execute() {
         String query = QUERY
                 .replaceAll("%DB_PDM%", dbApplicationConfig.getPdm().getDb());
