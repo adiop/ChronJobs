@@ -16,8 +16,8 @@ import java.util.Map;
 public class DunAndBradStreetNotificationService {
 
     private static final String DUN_AND_BRAD_STREET_TEMPLATE = "dunAndBradStreet/dunAndBradStreetTemplateNotification.ftl";
-    //private static final String DUN_AND_BRAD_STREET_TO_EMAIL = "dtwest@dnb.com";
-    private static final String DUN_AND_BRAD_STREET_TO_EMAIL = "diopa@warn.com";
+    private static final String DUN_AND_BRAD_STREET_TO_EMAIL = "dtwest@dnb.com";
+//    private static final String DUN_AND_BRAD_STREET_TO_EMAIL = "diopa@warn.com";
 
     @Autowired
     private NotificationService notificationService;
