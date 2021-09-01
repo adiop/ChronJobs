@@ -132,7 +132,7 @@ public class AssignUPCNumbers {
 
 
     //    @Scheduled(fixedRate = 1000000)
-    @Scheduled(cron = "0 0 21 * * ?")
+//    @Scheduled(cron = "0 0 21 * * ?")
     public void execute () {
 
         // Get part number with no upc and assign them
