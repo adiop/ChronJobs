@@ -32,7 +32,7 @@ public class DunAndBradstreet {
     @Qualifier("jdeBusinessJdbcTemplate")
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
-    @Scheduled(cron = "0 0 21 * * ?")
+//    @Scheduled(cron = "0 0 21 * * ?")
     public void execute () {
         doReport();
     }
