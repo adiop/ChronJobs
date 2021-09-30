@@ -33,6 +33,7 @@ public class DunAndBradstreet {
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
 //    @Scheduled(cron = "0 0 21 * * ?")
+    @Scheduled(cron = "0 0 21 3 * ?")
     public void execute () {
         doReport();
     }
