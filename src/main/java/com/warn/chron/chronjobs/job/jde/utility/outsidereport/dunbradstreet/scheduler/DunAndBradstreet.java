@@ -32,8 +32,8 @@ public class DunAndBradstreet {
     @Qualifier("jdeBusinessJdbcTemplate")
     private JdbcTemplate jdeBusinessJdbcTemplate;
 
-//    @Scheduled(cron = "0 0 21 * * ?")
-    @Scheduled(cron = "0 0 21 3 * ?")
+
+//    @Scheduled(cron = "0 0 21 3 * ?")
     public void execute () {
         doReport();
     }
